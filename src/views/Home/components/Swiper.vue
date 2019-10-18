@@ -2,21 +2,13 @@
   <div class="wrapper">
     <swiper id="swiper-container" :options="swiperOption">
       <!-- slides -->
-      <swiper-slide>
+      <swiper-slide v-for="item of HomeSwiperContent" :key="item.id">
         <img
           class="swiper-img"
-          src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2854349489,2054847772&fm=26&gp=0.jpg"
+          :src="item.imgUrl"
           alt
         />
       </swiper-slide>
-      <swiper-slide>
-        <img
-          class="swiper-img"
-          src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1496337433,148508854&fm=26&gp=0.jpg"
-          alt
-        />
-      </swiper-slide>
-
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
   </div>
@@ -25,6 +17,9 @@
 <script>
 export default {
   name: "HomeSwiper",
+  props:{
+    HomeSwiperContent:'',
+  },
   data() {
     return {
       swiperOption: {

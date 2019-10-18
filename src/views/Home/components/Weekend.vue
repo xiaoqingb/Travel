@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="recommend-title">周末去哪儿</div>
+    <div class="recommend-title" @click="xxx">周末去哪儿</div>
     <ul>
-      <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+      <li class="item border-bottom" v-for="item of HomeWeekendContent" :key="item.id">
         <img class="item-img" :src="item.imgUrl" alt />
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
@@ -16,33 +16,20 @@
 <script>
 export default {
   name: "HomeWeekend",
+  props:{
+    HomeWeekendContent:""
+  },
   data(){
-      return{
-          recommendList:[
-          {
-              id:'0001',
-              imgUrl:'https://f10.baidu.com/it/u=2388321944,3201079442&fm=72',
-              title:'大连圣亚海洋世界',
-              desc:'浪漫大连首站，浪漫的海洋主题乐园'
-          },{
-              id:'0002',
-              imgUrl:'https://f10.baidu.com/it/u=2388321944,3201079442&fm=72',
-              title:'大连圣亚海洋世界',
-              desc:'浪漫大连首站，浪漫的海洋主题乐园'
-          },{
-              id:'0003',
-              imgUrl:'https://f10.baidu.com/it/u=2388321944,3201079442&fm=72',
-              title:'大连圣亚海洋世界',
-              desc:'浪漫大连首站，浪漫的海洋主题乐园'
-          },{
-              id:'0004',
-              imgUrl:'https://f10.baidu.com/it/u=2388321944,3201079442&fm=72',
-              title:'大连圣亚海洋世界',
-              desc:'浪漫大连首站，浪漫的海洋主题乐园'
-          },
-      ]
-      }
-      
+
+     
+  },
+  // mounted:{
+  //   this.xxx()
+  // },
+  methods:{
+    xxx(){
+      console.log(this.HomeWeekendContent);
+    }
   }
 };
 </script>
@@ -52,7 +39,6 @@ export default {
 .recommend-title {
   font-size: 17px;
   background: rgba(238, 238, 238, 0.486);
-  margin-top: 5px;
   height: 30px;
   padding-left: 5px;
   line-height: 30px;
@@ -63,7 +49,7 @@ export default {
   box-sizing: border-box;
   .item-img {
     width: 100%;
-    height: 100px;
+    height: 120px;
     border-radius: 3px;
   }
   .item-info {
@@ -73,7 +59,7 @@ export default {
     .item-title {
       margin-top: 10px;
       font-size: 15px;
-    font-weight:550;
+     font-weight:550;
 
       .ellipsis();
     }
