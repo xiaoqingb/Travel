@@ -39,7 +39,7 @@ export default {
 
 .wrapper{
     width: 100%;
-    height: 200px;
+    height: 150px;
     background: #ccc;
     //  /deep/深度作用选择器
     /deep/.swiper-pagination-bullet-active{
