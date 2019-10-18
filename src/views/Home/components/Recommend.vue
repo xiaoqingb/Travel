@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="recommend-title">热销推荐</div>
+    <div class="recommend-title" @click="xxx">热销推荐</div>
     <ul>
-      <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+      <li class="item border-bottom" v-for="item of HomeRecommendContent" :key="item.id">
         <img class="item-img" :src="item.imgUrl" alt />
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
@@ -17,34 +17,15 @@
 <script>
 export default {
   name: "HomeRecommend",
+  props:{
+    HomeRecommendContent:'',
+  },
   data(){
-      return{
-          recommendList:[
-          {
-              id:'0001',
-              imgUrl:'https://f10.baidu.com/it/u=2388321944,3201079442&fm=72',
-              title:'大连圣亚海洋世界',
-              desc:'浪漫大连首站，浪漫的海洋主题乐园'
-          },{
-              id:'0002',
-              imgUrl:'https://f10.baidu.com/it/u=2388321944,3201079442&fm=72',
-              title:'大连圣亚海洋世界',
-              desc:'浪漫大连首站，浪漫的海洋主题乐园'
-          },{
-              id:'0003',
-              imgUrl:'https://f10.baidu.com/it/u=2388321944,3201079442&fm=72',
-              title:'大连圣亚海洋世界',
-              desc:'浪漫大连首站，浪漫的海洋主题乐园'
-          },{
-              id:'0004',
-              imgUrl:'https://f10.baidu.com/it/u=2388321944,3201079442&fm=72',
-              title:'大连圣亚海洋世界',
-              desc:'浪漫大连首站，浪漫的海洋主题乐园'
-          },
-      ]
-
-      }
-      
+  },
+  methods:{
+    xxx(){
+      console.log(this.HomeRecommendContent);
+    }
   }
 };
 </script>

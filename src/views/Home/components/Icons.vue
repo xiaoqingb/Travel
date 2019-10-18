@@ -1,7 +1,7 @@
 <template>
   <div class="icons">
     <swiper class="swiper-container">
-      <swiper-slide v-for='(page,index) of pages' :key="index">
+      <swiper-slide v-for='(page,i) of pages' :key="i">
         <div class="icon" v-for="item of page" :key="item.id">
           <div class="icon-img">
             <img
@@ -19,59 +19,28 @@
 <script>
 export default {
   name: "HomeIcons",
+  props:{
+    HomeIconsContent:'',
+  },
   data(){
     return {
-      iconList:[
-        {
-        id:'001',
-        desc:'景点门票',
-        imgUrl:'//s.qunarzz.com/homenode/images/touchheader/piao.png',
-        },{
-        id:'002',
-        desc:'火车票',
-        imgUrl:'//s.qunarzz.com/homenode/images/touchheader/train.png',
-        },{
-        id:'004',
-        desc:'度假',
-        imgUrl:'//s.qunarzz.com/homenode/images/touchheader/package.png',
-        },{
-        id:'005',
-        desc:'机票',
-        imgUrl:'//s.qunarzz.com/homenode/images/touchheader/flight.png',
-        },{
-           id:'006',
-        desc:'景点门票',
-        imgUrl:'//s.qunarzz.com/homenode/images/touchheader/piao.png',
-        },{
-        id:'007',
-        desc:'火车票',
-        imgUrl:'//s.qunarzz.com/homenode/images/touchheader/train.png',
-        },{
-        id:'008',
-        desc:'度假',
-        imgUrl:'//s.qunarzz.com/homenode/images/touchheader/package.png',
-        },{
-        id:'009',
-        desc:'机票',
-        imgUrl:'//s.qunarzz.com/homenode/images/touchheader/flight.png',
-        },{
-        id:'010',
-        desc:'机票',
-        imgUrl:'//s.qunarzz.com/homenode/images/touchheader/flight.png',
-        },
-      ]
+      swiperOption:{
+        autoplay:false,
+      }
     }
   },
   computed:{
     pages(){
       const pages=[];
-      this.iconList.forEach((item,index)=>{
-        const page=Math.floor(index/8);
+      // 对图标进行分页转换
+      let arr=this.HomeIconsContent;
+      for(let i=0;i<arr.length;i++){
+        const page=Math.floor(i/8);
         if(!pages[page]){
           pages[page]=[];
         }
-        pages[page].push(item)
-      })
+        pages[page].push(arr[i])
+      }
       return pages;
     }
   }
