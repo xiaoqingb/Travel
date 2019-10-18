@@ -85,14 +85,14 @@ export default {
   margin-top: 4px;
   /deep/.swiper-container {
     height: 0;
-    padding-bottom: 50%;
+    padding-bottom: 45%;
   }
 }
 .icon {
     position: relative;
     width: 25%;
     height: 0;
-    padding-bottom: 25%;
+    padding-bottom: 22.5%;
     float: left;
     .icon-img {
       position: absolute;
