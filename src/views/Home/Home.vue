@@ -15,7 +15,7 @@ import HomeSwiper from './components/Swiper.vue'
 import HomeIcons from './components/Icons'
 import HomeRecommend from './components/Recommend'
 import HomeWeekend from './components/Weekend'
-import mock from '../../mock.js'
+import mock from '../../mock/index.js'
 import axios from 'axios'
 
 export default {
