@@ -19,10 +19,6 @@ export default {
   props:{
     HomeWeekendContent:""
   },
-  data(){
-
-     
-  },
   // mounted:{
   //   this.xxx()
   // },

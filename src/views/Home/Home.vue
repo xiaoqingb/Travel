@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <home-header :city="city"></home-header>
     <home-swiper :HomeSwiperContent='HomeSwiperContent'></home-swiper> 
     <home-icons :HomeIconsContent='HomeIconsContent'></home-icons> 

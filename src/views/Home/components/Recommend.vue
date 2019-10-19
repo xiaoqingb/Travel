@@ -20,8 +20,6 @@ export default {
   props:{
     HomeRecommendContent:'',
   },
-  data(){
-  },
   methods:{
     xxx(){
       console.log(this.HomeRecommendContent);

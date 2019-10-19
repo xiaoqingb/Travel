@@ -7,10 +7,12 @@
         <span class="iconfont ">&#xe710;</span>
         输入城市/景观/游玩主题
         </div>
-    <div class="header-right">
-        {{this.city}}
-        <span class="iconfont">&#xe81c;</span>
-    </div>
+        <router-link to="city">
+            <div class="header-right">
+                    {{this.city}}
+                    <span class="iconfont">&#xe81c;</span>
+            </div>
+        </router-link>
     
   </div>
 </template>
@@ -31,13 +33,13 @@ export default {
     display: flex;
     background: @bgColor;
     color: #fff;
-    line-height: .86rem;
+    justify-content: center;
+    align-items: center;
+    height: @headerHeight;
     .header-left{
         width:.64rem;
-        float: left;
         .back-icon{
             text-align: center;
-            font-size: px;
         }
     }
     .header-input{
@@ -45,17 +47,14 @@ export default {
         background: #fff;
         border-radius: 5px;
         height: .64rem;
-        margin-top:.12rem;
-        margin-left:.2rem;
         color: #ccc;
         line-height: .64rem;
         padding-left:10px;
     }
     .header-right{
         width:1.24rem;
-        float: right;
+        color: #fff;
         text-align: center;
-
     }
 }
 </style>
