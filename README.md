@@ -4,7 +4,7 @@ stylus
 webpack
 awesome
 axios
-mock
+mock..
 swiper
 ####2019-10-18 23：30  ---随笔
 ###接触了几个新东西，比如：
