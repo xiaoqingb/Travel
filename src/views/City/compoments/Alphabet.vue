@@ -1,21 +1,72 @@
 <template>
     <ul class="list">
-        <li class="item" v-for=" (item,key) of cities" :key="key">
-            {{key}}
+        <li class="item" v-for=" item of letters" :key="item" :ref="item" :id="item"
+        @click="handlerLetterClick" 
+        @touchstart="handleTouchStart" 
+        @touchmove="handleTouchMove"
+        @touchend="handleTouchEnd">
+            {{item}}
         </li>
     </ul>
 </template>
 
 <script>
-import BScroll from 'better-scroll'
 
 export default {
   name: "Alphabet",
   props:{
       cities:'',
   },
+  data(){
+      return{
+          touchStatus:false,
+          startY:0,
+        //   函数节流
+          timer:null,
+      }
+  },
+  updated(){
+      this.startY=this.$refs['A'][0].offsetTop
+  },
+  computed:{
+      letters(){
+          const letters=[];
+          for(let i in this.cities){
+              letters.push(i);
+          }
+          return letters;
+        //   console.log(letters)
+      }
+  },
+  methods:{
+      handlerLetterClick(e){
+          this.$emit('change',e.target.innerText)
+        //   console.log(e.target.innerText)
+      },
+      handleTouchStart(){
+        this.touchStatus=true
+      },
+      handleTouchMove(e){
+        if (this.touchStatus) {
+            if (this.timer) {
+                clearTimeout(this.timer);
+            }
+            this.timer=setTimeout(() => {
+                const touchY=e.touches[0].clientY -76;
+                console.log(e.touches);
+                const index=Math.floor((touchY-this.startY)/17);
+                if (index>= 0 &&index<this.letters.length) {
+                    this.$emit('change',this.letters[index])
+                    console.log(this.letters[index]);
+                }
+            }, 10);
+        }
+      },
+      handleTouchEnd(){
+        this.touchStatus=false
+      }
+  },
   mounted(){
-      this.scroll=new BScroll(this.$refs.wrapper)
   }
 };
 </script>
@@ -24,18 +75,21 @@ export default {
 @import url("~@/assets/styles/varibles.less");
 .list{
     position: absolute;
-    right: 2px;
+    right: 4px;
     top: 90px;
     bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     width: 15px;
     .item{
         font-size: 17px;
         text-align: center;
         color: @bgColor;
+        height: 17px;
+        &:visited{
+            color: #000;
+        }
     }
 }
 </style>

@@ -7,6 +7,7 @@ axios
 mock...4
 swiper
 better-scroll
+函数节流
 ####2019-10-18 23：30  ---随笔
 ###接触了几个新东西，比如：
 
