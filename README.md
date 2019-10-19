@@ -4,10 +4,12 @@ stylus
 webpack
 awesome
 axios
-mock...4
+mock
 swiper
 better-scroll
 函数节流
+
+
 ####2019-10-18 23：30  ---随笔
 ###接触了几个新东西，比如：
 
@@ -20,13 +22,16 @@ better-scroll
  模拟数据传输的一个工具，在vue-cli@3之前，是在static目录里建立的，但是我现在这个4.0版本目录已经没有config，build，static这些目录了，
  硬着头皮上网查，真的给我查到了个mock这个东西，使用方法如下：
  
- step 1 :  先在main.js里建立一个mock.js
+ step 1 :  先在src目录里建立一个mock文件夹
  
- step 2 :  在文件里输入以下代码
+ step 2 :  在文件里创建index.js,然后输入以下代码
  
     import Mock from 'mockjs';
-    Mock.mock('/index', { //输出数据
+    Mock.mock('/city', { //输出数据
         city:'北京', 
+    });
+    Mock.mock('/login', { //输出数据
+        account:'xxx', 
     });`
    
  step 3 : 在接收axios的组件里写入以下代码
@@ -46,3 +51,5 @@ better-scroll
     }`
  
  ### vue-cli更新后webpack的目录和配置文件都没有啦？？？？
+ ### 4.better-scroll
+ 当下移动端流行的滚动条样式，这里就不做详述了，有官方文档可以看
