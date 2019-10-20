@@ -6,7 +6,7 @@
         <div class="search-content" ref="SearchWrapper"
             v-show="keyword">
             <ul>
-                <li class="item" v-for="item of list" :key="item.id">{{item.name}}</li>
+                <li class="item" v-for="item of list" :key="item.id"  @click="handleCityClick(item.name)">{{item.name}}</li>
                 <li class="item" v-show="hasData">
                     没有找到匹配数据
                 </li>
@@ -17,7 +17,7 @@
 
 <script>
 import BScroll from 'better-scroll'
-
+import { mapMutations } from "vuex";
 export default {
     name:'CitySearch',
     data(){
@@ -34,6 +34,13 @@ export default {
         hasData(){
             return !this.list.length
         }
+    },
+    methods:{
+            handleCityClick(city){
+      this.$store.commit('changeCity',city);
+      this.$router.push('/')
+    //   console.log(city)
+    }
     },
     watch:{
         keyword(){

@@ -1,17 +1,18 @@
 新事物：
-em/rem
-stylus
-webpack
-awesome
-axios
-mock
-swiper
-better-scroll
+em/rem单位,
+stylus,
+webpack,
+awesome,
+axios,
+mock,
+swiper,
+better-scroll,
+vuex,
 函数节流
 
 
-####2019-10-18 23：30  ---随笔
-###接触了几个新东西，比如：
+#### 2019-10-18 23：30  ---随笔
+#### 接触了几个新东西，比如：
 
 ### 1.stylus
  这个有点像less的工具，但个人觉得代码风格不是很好，可阅读性比less低，而且基本功能less都有，像/deep/深度选择器一样，stylus是用>>>来绑定子元素。
@@ -51,5 +52,6 @@ better-scroll
     }`
  
  ### vue-cli更新后webpack的目录和配置文件都没有啦？？？？
+ 2019-10-20 0:55    --随笔
  ### 4.better-scroll
  当下移动端流行的滚动条样式，这里就不做详述了，有官方文档可以看

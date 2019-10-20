@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <home-header :city="city"></home-header>
+    <home-header ></home-header>
     <home-swiper :HomeSwiperContent='HomeSwiperContent'></home-swiper> 
     <home-icons :HomeIconsContent='HomeIconsContent'></home-icons> 
     <home-recommend :HomeRecommendContent='HomeRecommendContent' ></home-recommend> 
@@ -26,7 +26,7 @@ export default {
       HomeRecommendContent:'',
       HomeWeekendContent:'',
       HomeIconsContent:'',
-      city:'',
+      // city:'',
     }
   },
   components:{
@@ -50,7 +50,7 @@ export default {
                         this.HomeRecommendContent=response.data['recommendList'];
                         this.HomeWeekendContent=response.data['weekendList'];
                         this.HomeIconsContent=response.data['iconList'];
-                        this.city=response.data['city'];
+                        // this.city=response.data['city'];
                         // console.log(this.HomeWeekendContent);
                         // console.log(this.HomeRecommendContent);
                         // console.log(this.HomeSwiperContent);

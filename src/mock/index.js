@@ -2,7 +2,7 @@
 import Mock from 'mockjs';
 
 Mock.mock('/index', { //输出数据
-    city:'北京',  
+    // city:'北京',  
     "iconList": [{
         "id": "0001",
         "imgUrl": "http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png",
