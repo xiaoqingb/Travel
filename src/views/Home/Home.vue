@@ -17,6 +17,7 @@ import HomeRecommend from './components/Recommend'
 import HomeWeekend from './components/Weekend'
 import mock from '../../mock/index.js'
 import axios from 'axios'
+import { mapState } from 'vuex'
 
 export default {
   name:'Home',
@@ -26,7 +27,7 @@ export default {
       HomeRecommendContent:'',
       HomeWeekendContent:'',
       HomeIconsContent:'',
-      // city:'',
+      lastCity:'',
     }
   },
   components:{
@@ -36,27 +37,43 @@ export default {
     HomeRecommend,
     HomeWeekend,
     mock,
-    axios
+    axios,
+    
   },
   mounted(){
+    this.lastCity=this.city
     this.getHomeInfo()
+  },
+  activated(){
+    if (this.lastCity!==this.city) {
+      this.lastCity=this.city;
+      this.getHomeInfo();
+    }
+  },
+  computed:{
+    ...mapState(['city'])
   },
   methods:{
     getHomeInfo(){
-      axios.get("/index").then(response => {
-                    if (response.data) {
-                        console.log(response.data);
-                        this.HomeSwiperContent=response.data['swiperList'];
-                        this.HomeRecommendContent=response.data['recommendList'];
-                        this.HomeWeekendContent=response.data['weekendList'];
-                        this.HomeIconsContent=response.data['iconList'];
-                        // this.city=response.data['city'];
-                        // console.log(this.HomeWeekendContent);
-                        // console.log(this.HomeRecommendContent);
-                        // console.log(this.HomeSwiperContent);
-                        // console.log(this.city);
-                    }
-                })
+      axios.get("/index")
+      .then(response => {
+          if (response.data) {
+              console.log(response.data);
+              this.HomeSwiperContent=response.data['swiperList'];
+              this.HomeRecommendContent=response.data['recommendList'];
+              this.HomeWeekendContent=response.data['weekendList'];
+              this.HomeIconsContent=response.data['iconList'];
+              // this.city=response.data['city'];
+              // console.log(this.HomeWeekendContent);
+              // console.log(this.HomeRecommendContent);
+              // console.log(this.HomeSwiperContent);
+              // console.log(this.city);
+          }
+      })
+      .catch(function(err){
+        console.log(err);
+      })
+    
     }
   }
 }

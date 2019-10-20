@@ -9,7 +9,7 @@
         </div>
         <router-link to="city">
             <div class="header-right">
-                    {{this.doubleCity}}
+                    {{this.city}}
                     <span class="iconfont">&#xe81c;</span>
             </div>
         </router-link>
@@ -24,7 +24,7 @@ export default {
         computed:{
         // 从vuex映射到组件里并将city加入计算属性中
         ...mapState(['city']),
-        ...mapGetters(['doubleCity']),
+        // ...mapGetters(['doubleCity']),
     }
 }
 </script>

@@ -59,7 +59,7 @@ export default {
                     this.$emit('change',this.letters[index])
                     console.log(this.letters[index]);
                 }
-            }, 10);
+            }, 7);
         }
       },
       handleTouchEnd(){

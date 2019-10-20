@@ -1,7 +1,7 @@
 //引入mock模块
 import Mock from 'mockjs';
-
-Mock.mock('/index', { //输出数据
+//主页数据
+Mock.mock('/index', { 
     // city:'北京',  
     "iconList": [{
         "id": "0001",
@@ -118,7 +118,8 @@ Mock.mock('/index', { //输出数据
         desc: "带宝贝观看演出，近距离体验艺术的无穷魅力"
     }],
 });
-Mock.mock('/city', { //输出数据
+//城市数据
+Mock.mock('/city', { 
   hotCities: [{
     "id": 1,
     "spell": "beijing",
@@ -3982,3 +3983,7 @@ Mock.mock('/city', { //输出数据
   }
 
 });
+// 指定被拦截的 Ajax 请求的响应时间
+Mock.setup({
+  // timeout: 400
+})

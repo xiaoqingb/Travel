@@ -10,8 +10,8 @@ export default new Vuex.Store({
     mutations,
     // getter类似于computed
     getters:{
-        doubleCity(state){
-            return state.city +' '+state.city;
-        }
+        // doubleCity(state){
+        //     return state.city +' '+state.city;
+        // }
     }
 })
