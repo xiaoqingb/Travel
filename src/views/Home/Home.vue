@@ -58,7 +58,7 @@ export default {
       axios.get("/index")
       .then(response => {
           if (response.data) {
-              console.log(response.data);
+              // console.log(response.data);
               this.HomeSwiperContent=response.data['swiperList'];
               this.HomeRecommendContent=response.data['recommendList'];
               this.HomeWeekendContent=response.data['weekendList'];
@@ -75,7 +75,8 @@ export default {
       })
     
     }
-  }
+  },
+  
 }
 </script>
 

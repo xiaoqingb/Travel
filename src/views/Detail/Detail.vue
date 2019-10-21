@@ -1,18 +1,21 @@
 <template>
   <div class="detail">
-    <detail-banner
-      ></detail-banner>
+    <detail-header></detail-header>
+    <detail-banner></detail-banner>
+    <div class="content"></div>
       <!-- :bannerImg="bannerImg" -->
   </div>
 </template>
 
 <script>
-import DetailBanner from './components/DetailBanner.vue'
+import DetailBanner from './components/Banner.vue'
+import DetailHeader from './components/Header.vue'
 import axios from 'axios'
 
 export default {
     name:'Detail',
     components:{
+      DetailHeader,
       DetailBanner,
     },
      data () {
@@ -51,6 +54,9 @@ export default {
 </script>
 
 <style lang ="less" scoped>
-
+.content{
+  width: 100%;
+  height: 900px;
+}
 
 </style>
