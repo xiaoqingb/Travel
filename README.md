@@ -64,4 +64,5 @@ vuex,
   Maximum call stack size exceeded
  `
  可能是因为父子组件的name重复了！！！！
- ### 8. 
+ ### 8. keep-alive
+ 自动保存各页面,除了detail页面， 因为detail中有个scroll全局事件，每次切换页面，都不会执行destroy等事件，这就造成了无法消除scroll事件，所以只能不保存detail页面了~~
