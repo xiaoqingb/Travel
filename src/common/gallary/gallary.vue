@@ -44,7 +44,7 @@ export default {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  z-index: 1;
+  // z-index: 99;
   position: fixed;
   left: 0;
   right: 0;
@@ -61,7 +61,7 @@ export default {
         height: 100%;
     }
     .swiper-pagination{
-        z-index: 2;
+        // z-index: 2;
         color: #ccc;
         position: absolute;
         bottom: -40%;
