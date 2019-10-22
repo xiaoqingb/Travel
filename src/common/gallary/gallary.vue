@@ -57,14 +57,14 @@ export default {
     height: 0;
     padding-bottom: 100%;
     .gallary-img{
-        // width: 100%;
-        height: 100%;
+        width: 100%;
+        // height: 100%;
     }
     .swiper-pagination{
         // z-index: 2;
         color: #ccc;
         position: absolute;
-        bottom: -40%;
+        bottom: -20%;
     } 
 }
 }

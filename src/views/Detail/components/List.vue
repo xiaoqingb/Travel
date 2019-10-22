@@ -23,13 +23,16 @@ export default {
 </script>
 
 <style lang='less' scoped>
+@import url('~@/assets/styles/mixins.less');
 .item{
+    @marginLeft:10px;
     position: relative;
     .item-title{
-    margin: 15px 10px;
+    margin: 15px 0 15px @marginLeft;
     font-size: 16px;
     display: flex;
     align-items: center;
+    .ellipsis();
     }
     .item-title-icon{
         display: inline-block;
@@ -40,9 +43,9 @@ export default {
         background-size: .4rem 3rem;
     }
     .item-children{
-        margin: 15px 20px;
+        margin: 15px 0 15px 2*@marginLeft;
         .item-children{
-            margin: 15px 30px;
+            margin: 15px 0 15px 3*@marginLeft;
         }
     }
     
