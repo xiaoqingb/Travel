@@ -3,7 +3,7 @@
   <div class="banner" @click="handleBannerClick">
     <img class="banner-img" src="//img1.qunarzz.com/sight/p0/1708/2b/2b3b94de99c0a425a3.img.jpg_600x330_b40971b4.jpg" alt="">
     <div class="banner-info">
-      <div class="banner-title">八达岭长城(AAAAA景区)</div>
+      <div class="banner-title">{{this.sightName}}</div>
       <div class="banner-num">
         <span class="iconfont icon-pic" >&#xe665; <i>39</i></span>
          
@@ -11,10 +11,10 @@
     </div>
   </div>
   <common-gallary  
-    :bannerImgs="bannerImgs"
+    :gallaryImgs="gallaryImgs"
     @close="handleGallaryClose"
     v-show="showGallary"
-    >
+     class="common-gallary">
   </common-gallary>
 
 </div>
@@ -29,6 +29,8 @@ export default {
   props:{
     sightName:'',
     bannerImg:'',
+    gallaryImgs:'',
+
   },
   components:{
    CommonGallary
@@ -95,5 +97,8 @@ export default {
       }
     }
   }
+}
+.common-gallary{
+  z-index: 2;
 }
 </style>     

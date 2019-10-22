@@ -49,7 +49,7 @@ vuex,
             //拿到数据后就可以传给子组件了
         }
       })
-    }`
+    }
  
  ### vue-cli更新后webpack的目录和配置文件都没有啦？？？？
  2019-10-20 0:55    --随笔
@@ -66,3 +66,26 @@ vuex,
  可能是因为父子组件的name重复了！！！！
  ### 8. keep-alive
  自动保存各页面,除了detail页面， 因为detail中有个scroll全局事件，每次切换页面，都不会执行destroy等事件，这就造成了无法消除scroll事件，所以只能不保存detail页面了~~
+ ### 9.list里有递归渲染组件
+
+
+    <div v-for="(item,index) of list" :key="index" class="item">
+        <div class="item-title">
+            <span class="item-title-icon"></span>{{item.title}}
+        </div>
+        <div v-if="item.children">
+            <detail-list list='item.children'></detail-list>
+        </div>
+    </div>
+#### Data:
+    list: [
+      {
+      title:'成人票',
+      children:[{
+        title:'成人三馆联票',
+
+      },{
+        title:'成人五馆联票',
+
+      }]
+ 通过判断item.children是否存在，是则继续渲染detail—list

@@ -27,7 +27,13 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  // 回滚页面顶部
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+
+  }
 })
+
 
 export default router
