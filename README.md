@@ -93,3 +93,18 @@ vuex,
 
       }]
  通过判断item.children是否存在，是则继续渲染detail—list
+
+ ### 10. 关于API，是在build之后执行的  -todo
+
+
+      npm run build api = https://192.168.166.156:8444 命令行执行之后整个页面的 api 接口前缀就会改为https://192.168.166.156:8444
+
+### 11.babel-polyfill插件
+这将模拟完整的ES2015 +环境，并且打算在应用程序中使用，而不是在库/工具中使用。（使用时，该polyfill会自动加载babel-node）
+这意味着可以使用新的内置函数，如Promise
+### 12.在手机端拖动字母列表时，页面会跟着拖动，解决方法如下:
+
+
+### 13.调用百度接口的时候，出现了以下错误
+    vue.runtime.esm.js?2b0e:619 [Vue warn]: Error in created hook: "TypeError: Cannot read property 'gc' of undefined"
+我去网上搜了一下，发现是因为返回的资源还没有加载完就调用，才会报错，所以应该加个setTimeOut，给它一点缓冲时间

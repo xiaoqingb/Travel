@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home/Home.vue'
-import City from '@/views/City/City.vue'
-import Detail from '@/views/Detail/Detail.vue'
+// import City from '@/views/City/City.vue'
+// import Detail from '@/views/Detail/Detail.vue'
+// import Map from '@/views/Map/Map.vue'
 
 Vue.use(VueRouter)
-
 const routes = [
   {
     path: '/',
@@ -15,14 +15,22 @@ const routes = [
   {
     path: '/city',
     name: 'City',
-    component: City
+    component: City => require(['@/views/City/City.vue'],City)
   },
   {
     // 动态路由
     path: '/detail',
     name: 'Detail',
-    component: Detail
+    component: Detail => require(['@/views/Detail/Detail.vue'],Detail)
   },
+  {
+    // 动态路由
+    path: '/Map',
+    name: 'Map',
+    component: Map => require(['@/views/Map/Map.vue'],Map)
+  },
+
+
 
 ]
 

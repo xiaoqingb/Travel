@@ -6,6 +6,11 @@
   </div>
 </template>
 <style lang="less">
-
+#app{
+  height: 100%;
+}
+body,html{
+  height:100%;
+}
 </style>
 

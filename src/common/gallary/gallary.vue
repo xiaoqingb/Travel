@@ -52,7 +52,6 @@ export default {
   bottom: 0;
   background: #000;
   .wrapper {
-
     width: 100%;
     height: 0;
     padding-bottom: 100%;
@@ -66,6 +65,6 @@ export default {
         position: absolute;
         bottom: -20%;
     } 
-}
+  }
 }
 </style>

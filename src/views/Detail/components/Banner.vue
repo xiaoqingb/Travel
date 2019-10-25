@@ -43,10 +43,7 @@ export default {
   data(){
     return{
       showGallary:false,
-      bannerImgs:[
-      'http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg',
-      'http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg'
-    ],
+      bannerImgs:[],
     }
   },
   methods:{
@@ -88,7 +85,7 @@ export default {
     // 很实用的一个背景渐变
     background-image: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.8));
     .banner-title{
-      width: 70%;
+      width: 80%;
       .ellipsis();
     }
     .banner-num{
@@ -102,6 +99,7 @@ export default {
       }
     }
   }
+ 
 }
 .common-gallary{
   z-index: 2;
