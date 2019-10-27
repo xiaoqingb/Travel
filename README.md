@@ -61,9 +61,9 @@ vuex,
  ### 6.代码优化
  其实各个组件不用划分的太细，直接应用在home。vue里就好了，单独写出来的组件特点就是重复性比较高，不然就是不会单独写出来的
  ### 7.血的教训
- `
-  Maximum call stack size exceeded
- `
+ 
+      Maximum call stack size exceeded
+ 
  可能是因为父子组件的name重复了！！！！
 
   2019-10-22 12:55    --随笔
@@ -103,8 +103,22 @@ vuex,
 这将模拟完整的ES2015 +环境，并且打算在应用程序中使用，而不是在库/工具中使用。（使用时，该polyfill会自动加载babel-node）
 这意味着可以使用新的内置函数，如Promise
 ### 12.在手机端拖动字母列表时，页面会跟着拖动，解决方法如下:
+在侧边滚动条alphabet组件里
 
+      <template>
+      <ul class="list">
+          <li class="item" v-for=" item of letters" :key="item" :ref="item" :id="item"
+          @click="handlerLetterClick" 
+          @touchstart.prevent="handleTouchStart" 
+          @touchmove="handleTouchMove"
+          @touchend="handleTouchEnd">
+              {{item}}
+          </li>
+      </ul>
+      </template>
+给@touchstart添加一个prevent就可以防止拖动了
 
+  2019-10-26 0:33    --随笔
 ### 13.调用百度接口的时候，出现了以下错误
     vue.runtime.esm.js?2b0e:619 [Vue warn]: Error in created hook: "TypeError: Cannot read property 'gc' of undefined"
-我去网上搜了一下，发现是因为返回的资源还没有加载完就调用，才会报错，所以应该加个setTimeOut，给它一点缓冲时间
+我去网上搜了一下，发现是因为返回的资源还没有加载完就调用，才会报错，所以应该加个setTimeOut，给它一点缓冲时间就OK

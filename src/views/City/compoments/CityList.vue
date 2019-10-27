@@ -45,7 +45,6 @@ export default {
   },
   watch:{
     letter(){
-      // console.log(this.letter);
       if (this.letter) {
         const element=this.$refs[this.letter][0];
         this.scroll.scrollToElement(element)
@@ -54,10 +53,8 @@ export default {
   },
   methods:{
     handleCityClick(city){
-      // this.$store.commit('changeCity',city);
       this.changeCity(city)
-       this.$router.push('/')
-      // console.log(city)
+      this.$router.push('/')
     },
     ...mapMutations(['changeCity'])
   },

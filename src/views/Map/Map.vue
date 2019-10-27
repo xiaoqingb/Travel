@@ -3,26 +3,41 @@
     <div class="header" >
       <router-link to="/">
         <div class="iconfont header-back">&#xe618;</div>
-      </router-link>城市选择
+      </router-link>景点地址
     </div>
-    <b-map-component class="b-map" :mapHeight="mapHeight"></b-map-component>
+    <b-map-component class="b-map" :mapHeight="mapHeight" :sightName='this.viewPoint'></b-map-component>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import { mapState, mapGetters } from "vuex";
+
 import BMapComponent from '@/common/map/BMapComponent.vue';
 export default {
     name:'Map',
     components:{
         BMapComponent
+    }, 
+    data(){
+      return{
+        // sightName:this.viewPoint,
+      }
+    },
+    computed:{
+        // 从vuex映射到组件里并将city加入计算属性中
+        ...mapState(['viewPoint']),
     },
     data(){
         return{
-            mapHeight:document.body.clientHeight-40,
+            // 地图的高度就是页面高度减去页眉高度
+            // 地图必须有一个固定高度，不然会报错，而且高度最好填满页面，不然会有缝隙
+            mapHeight:document.body.clientHeight-43,
         }
     },
-    
+    mounted(){
+        // console.log(this.viewPoint);
+    }
 }
 </script>
 

@@ -38,11 +38,11 @@
 
   </div>
 </template>
-
 <script>
 import DetailBanner from './components/Banner.vue'
 import DetailHeader from './components/Header.vue'
 import DetailList from './components/List.vue'
+import { mapState,mapMutations } from "vuex"
 import axios from 'axios'
 
 export default {
@@ -82,8 +82,12 @@ export default {
       }
     },
     goToMap(){
+      this.changeViewPoint(this.sightName);
       this.$router.push({path:'Map'})
-    }
+      // console.log(this.)
+    },
+    ...mapMutations(['changeViewPoint'])
+
   },
  
 }

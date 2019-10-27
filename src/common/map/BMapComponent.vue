@@ -2,7 +2,7 @@
     <!--<div id="allmap" style="width: 100%; height: {{mapHeight}}px"></div>-->
     <!--<div id="allmap":style="{width: '100%', height: mapHeight + 'px'}"></div>-->
 
-    <div id="container"></div> 
+    <div id="container" :style="{width: '100%', height: mapHeight + 'px'}"></div> 
 
 
 </template>
@@ -11,111 +11,97 @@
 
     export default {
         name: "BMapComponent",
-        data:function(){
+        props:{
+            mapHeight:'',
+            sightName:'',
+        },
+        data(){
             return{
-                mapStyle:{
-                    width:'100%',
-                    height:this.mapHeight +'px'
-                }
             }
         },
         methods:{
-            xxx(){
+            initMap(){
+                let startLng='';
+                let startLat='';
+                let endLng='';
+                let endLat='';
+                // setp 1.初始化地图
                 var map = new BMap.Map("container");    
+                // 生成坐标点
                 var point = new BMap.Point(116.404, 39.915);    
-                map.centerAndZoom(point, 15);    
-                window.setTimeout(function(){  
-                    map.panTo(new BMap.Point(116.409, 39.918));    
-                }, 500);
+                map.centerAndZoom(point, 15);                 
+                // 平移缩放控件   
+                map.addControl(new BMap.NavigationControl());  
+                // 比例尺控件  
+                // map.addControl(new BMap.ScaleControl());    
+                // 切换地图类型控件
+                map.addControl(new BMap.MapTypeControl());  
+                // 根据坐标点实例化一个小红标
+                var marker = new BMap.Marker(point);        
+                 
+                var myGeo = new BMap.Geocoder();      
+
+                // setp 2.获取景点坐标
+
+                // 将地址解析结果显示在地图上，并调整地图视野   
+                // 这里要传一个景点的值，可以可以快速聚焦   
+                myGeo.getPoint(this.sightName, function(point){
+                    
+                    endLng=point.lng;
+                    endLat=point.lat;
+                    if (point) {      
+                        map.centerAndZoom(point, 16);  
+                        // 创建景点标注       
+                        map.addOverlay(new BMap.Marker(point));      
+                    }      
+                }, 
+                // 这里还要加个城市限定，缩小搜索范围，不然搜不到
+                '北京');
+                var geolocation = new BMap.Geolocation();
+                // console.log(geolocation)
+                // 给访问者做标记
+                function myFun(result){
+                    startLng=result.center.lng;
+                    startLat=result.center.lat;
+                    var point2 = new BMap.Point(result.center.lng, result.center.lat);   
+                    var marker2 = new BMap.Marker(point2);
+                    // 创建起始城市标注    
+                    map.addOverlay(marker2);
+                    var cityName = result.name;
+                    var marker = new BMap.Marker(result.point);  
+                    // map.setCenter(cityName);
+                    // alert("当前定位城市:"+cityName);
+                }
+                var myCity = new BMap.LocalCity();
+                myCity.get(myFun); 
+                // var map = new BMap.Map("container"); 
+            //    map.centerAndZoom(new BMap.Point(116.404, 39.915), 14); 
+                // var driving = new BMap.DrivingRoute(map, { 
+                //     renderOptions: { 
+                //         map: map, 
+                //         autoViewport: true 
+                // } 
+                // });
+                // var start = new BMap.Point(startLng, startLat);
+                // var end = new BMap.Point(endLng, endLat);
+                // driving.search(start, end);
             }
         },
         created(){
-            this.xxx()
-        //    setTimeout(() => {
-        //        this.xxx();
-        //    }, 1000);
+           setTimeout(() => {
+               this.initMap();
+           }, 1500);
+           console.log(this.sightName);
+        },
+        mounted(){
+            
+        },
     }
-    }
-        // props:{
-        //     // 地图在该视图上的高度
-        //     mapHeight:{
-        //         type:Number,
-        //         default:500
-        //     },
-        //     // 经度
-        //     longitude:{
-        //         type:Number,
-        //         default:156.404
-        //     }
-        //     ,
-        //     // 纬度
-        //     latitude:{
-        //         type:Number,
-        //         default:39.915
-        //     },
-        //     description:{
-        //         type:String,
-        //         default:'天安门'
-        //     }
-        // },
 
-        // ready:function(){
-        //     //  实例化地图
-        //     var map =newBMap.Map("allmap");
-
-        //     var point =newBMap.Point(120.391655,36.067588);
-        //     var marker =newBMap.Marker(point);
-        //     map.addOverlay(marker);
-        //     map.centerAndZoom("北京",3);
-        //     // 信息窗的配置信息
-        //     var opts ={
-        //         width :250,
-        //         height:75,
-        //         title :"地址：",
-        //     }
-        //     var infoWindow =newBMap.InfoWindow(this.description, opts);// 创建信息窗口对象
-        //     marker.addEventListener("click",function(){
-        //         map.openInfoWindow(infoWindow,point);
-        //     });
-        //     map.enableScrollWheelZoom(true);
-        //     map.openInfoWindow(infoWindow,point);//开启信息窗口
-        // },
-    //     mounted(){
-    //         var map = new BMap.Map("allmap");
-    //         var geolocation = new BMap.Geolocation();
-    //         //比例尺
-    //         map.addControl(new BMap.ScaleControl());     
-    //         //地图类型
-    //         map.addControl(new BMap.MapTypeControl());      
-    //         // 缩放控件
-    //         map.addControl(new BMap.NavigationControl());
-    //         geolocation.getCurrentPosition(function(r){
-    //             var point = new BMap.Point(r.point.lng,r.point.lat);
-    //             map.centerAndZoom(point,12);
-    //             if(this.getStatus() == BMAP_STATUS_SUCCESS){
-    //                 var mk = new BMap.Marker(r.point);
-    //                 map.addOverlay(mk);
-    //                 map.panTo(r.point);
-
-    //                 function myFun(result){
-    //                     var cityName = result.name;
-    //                     map.setCenter(cityName);
-    //                     alert("当前定位城市:"+cityName);
-    //                 }
-    //             }
-
-    //             else {
-    //                 alert('failed'+this.getStatus());
-    //             }
-    //         });
-    //     }
-
-    // }
 </script>
 
 <style lang='less' scoped>
     #container{
-        height:100%;
         width: 100%;
     }
 </style>
