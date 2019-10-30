@@ -7,11 +7,14 @@ import 'babel-polyfill'
 import './assets/styles/reset.css'
 import './assets/styles/border.css'
 import './assets/styles/iconfont.css'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 
 Vue.config.productionTip = true;
 fastClick.attach(document.body);
+Vue.use(ElementUI);
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 new Vue({
   store,

@@ -38,7 +38,6 @@ export default {
     HomeWeekend,
     mock,
     axios,
-    
   },
   mounted(){
     this.lastCity=this.city

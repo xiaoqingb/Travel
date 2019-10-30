@@ -122,3 +122,7 @@ vuex,
 ### 13.调用百度接口的时候，出现了以下错误
     vue.runtime.esm.js?2b0e:619 [Vue warn]: Error in created hook: "TypeError: Cannot read property 'gc' of undefined"
 我去网上搜了一下，发现是因为返回的资源还没有加载完就调用，才会报错，所以应该加个setTimeOut，给它一点缓冲时间就OK
+
+2019-10-29 17:03 --随笔
+### 14.在mounted,created里拿不到props的值
+解决方法:可以用watch方法，监视你想要的值，进行处理

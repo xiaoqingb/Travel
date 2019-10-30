@@ -1,7 +1,7 @@
 <template>
   <div class="map-page">
     <div class="header" >
-      <router-link to="/">
+      <router-link to="/detail">
         <div class="iconfont header-back">&#xe618;</div>
       </router-link>景点地址
     </div>
