@@ -43,7 +43,7 @@ vuex,
     
     //然后在methods里写接收函数
     getHomeInfo(){
-      axios.get("/xiaoqingb.github.io/travel-platfrom/index").then(response => {
+      axios.get("/index").then(response => {
         if (response.data) {
             console.log(response.data);
             //拿到数据后就可以传给子组件了

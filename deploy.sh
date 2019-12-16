@@ -7,7 +7,8 @@ set -e
 npm build
 
 cd ./dist
-
+git init
 git add -A
 git commit -m 'chore'
-git push -f git@github.com:xiaoqingb/travel-platform.github.io.git
+git remote add origin git@github.com:xiaoqingb/travel-platfrom.git
+git push -u origin master -f
