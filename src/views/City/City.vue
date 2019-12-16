@@ -35,7 +35,7 @@ export default {
   },
   methods:{
     getCityInfo(){
-        axios.get("/city").then(response => {
+        axios.get("/xiaoqingb.github.io/travel-platfrom/city").then(response => {
                       if (response.data) {
                           // console.log(response.data);
                           this.hotCities=response.data['hotCities'];

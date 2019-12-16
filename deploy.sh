@@ -10,4 +10,4 @@ cd ./dist
 
 git add -A
 git commit -m 'chore'
-git push -f git@github.com:xiaoqingb/travel-platform.git
+git push -f git@github.com:xiaoqingb/travel-platform.github.io.git

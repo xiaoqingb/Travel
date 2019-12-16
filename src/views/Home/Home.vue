@@ -54,7 +54,7 @@ export default {
   },
   methods:{
     getHomeInfo(){
-      axios.get("/index")
+      axios.get("/xiaoqingb.github.io/travel-platfrom/index")
       .then(response => {
           if (response.data) {
               // console.log(response.data);
